@@ -6,19 +6,24 @@ import "./index.css";
 
 const albums = [
   {
-    img: "./kiss.jpg",
+    img: "./img/kiss.jpg",
     title: "I Was Made For Lovin' You",
     artist: "Kiss",
   },
   {
-    img: "./julio.jpg",
+    img: "./img/julio.jpg",
     title: " Quiereme Mucho",
     artist: "Julio Iglesias",
   },
   {
-    img: "./art.jpg",
+    img: "./img/art.jpg",
     title: "Bright Eyes",
     artist: "Art Garfunkel ",
+  },
+  {
+    img: "./img/abba.jpg",
+    title: "Chiquitita",
+    artist: "Abba",
   },
 ];
 
@@ -29,13 +34,7 @@ function BookList() {
       <section className="booklist">
         {albums.map((album) => {
           const { img, title, artist } = album;
-          return (
-            <div>
-              <img src={img} alt="" className="pageImage" />
-              <h3>{title}</h3>
-              <h4>{artist}</h4>
-            </div>
-          );
+          return <Book key={album.title} {...album}></Book>;
         })}
         {/* <Book job="Developer" age={54} />
         <Book job="Cook" age={34} />
@@ -49,18 +48,18 @@ function BookList() {
 }
 
 const Title = () => {
-  return <h1 className="pageTitle">Book List</h1>;
+  return <h1 className="pageTitle">Book & Album List</h1>;
 };
 
 const Book = (props) => {
-  const { job, age } = props;
+  const { img, title, artist } = props;
   return (
     <article className="book">
-      <Image />
-      <BookTitle />
-      <Author />
-      <p>{job}</p>
-      <p>{age}</p>
+      <div>
+        <img src={img} alt="" className="pageImage" />
+        <h3>{title}</h3>
+        <h4>{artist}</h4>
+      </div>
     </article>
   );
 };
