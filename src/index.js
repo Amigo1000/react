@@ -4,17 +4,45 @@ import ReactDom from "react-dom";
 //Css
 import "./index.css";
 
+const albums = [
+  {
+    img: "./kiss.jpg",
+    title: "I Was Made For Lovin' You",
+    artist: "Kiss",
+  },
+  {
+    img: "./julio.jpg",
+    title: " Quiereme Mucho",
+    artist: "Julio Iglesias",
+  },
+  {
+    img: "./art.jpg",
+    title: "Bright Eyes",
+    artist: "Art Garfunkel ",
+  },
+];
+
 function BookList() {
   return (
     <div className="title">
       <Title />
       <section className="booklist">
-        <Book job="Developer" age={54} />
+        {albums.map((album) => {
+          const { img, title, artist } = album;
+          return (
+            <div>
+              <img src={img} alt="" className="pageImage" />
+              <h3>{title}</h3>
+              <h4>{artist}</h4>
+            </div>
+          );
+        })}
+        {/* <Book job="Developer" age={54} />
         <Book job="Cook" age={34} />
         <Book />
         <Book />
         <Book />
-        <Book />
+        <Book /> */}
       </section>
     </div>
   );
